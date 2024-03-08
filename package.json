@@ -1,0 +1,24 @@
+{
+  "name": "pdfwordfinder",
+  "version": "1.0.0",
+  "description": "It is use to parse each word in pdf and find the most use word.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeroTan/PDFwordfinder.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JeroTan/PDFwordfinder/issues"
+  },
+  "homepage": "https://github.com/JeroTan/PDFwordfinder#readme",
+  "dependencies": {
+    "express": "^4.18.3",
+    "pdf-text-reader": "^4.0.1"
+  }
+}

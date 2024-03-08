@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDFWordFinder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body class="bg-gray-800 text-slate-50">
+    <h1 class="text-5xl">Word Count</h1>
+    <div id="wordList" class="flex gap-x-2 gap-y-8 flex-wrap p-2 mt-2">
+        <div class="bg-sky-700 px-4 py-2 rounded" style="font-size: 50px;">
+            <span>Loading</span>: <span class="text-orange-300 font-bold"></span>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('load',(e)=>{
+            const container = document.getElementById("wordList");
+            const path = "http://localhost:8002/data";
+            console.log("fetching");
+            axios.get(path).then(x=>{
+                container.innerHTML = "";
+                const data = x.data.text;
+                data.forEach(e => {
+                    const newElement = document.createElement("div");
+                    const newElementClass = "bg-sky-700 px-4 py-2 rounded";
+                    newElementClass.split(" ").forEach(className => {
+                        newElement.classList.add(className);
+                    });
+                    newElement.innerHTML = `
+                        <span>${e.word}</span>: <span class="text-orange-300 font-bold">${e.count}</span>
+                    `;
+                    const fontSize = (e.count > 16 ? (e.count > 100 ? 100 : e.count ) : 16);
+                    newElement.style.fontSize = `${fontSize}px`;
+                    container.appendChild(newElement);
+                });
+            });
+        });
+
+    </script>
+
+</body>
+</html>
