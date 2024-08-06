@@ -10,6 +10,7 @@ app.get('', (req, res)=>{
 });
 app.get('/data', (req, res)=>{
     const path = "pdf/sample.pdf"; //CHANGE THE PATH HERE!!!!
+    console.log(req);
     readPdfText({url: path}).then((data)=>{
         res.send({
             text: wordAppearanceChecker(data)
@@ -19,7 +20,7 @@ app.get('/data', (req, res)=>{
 });
 
 app.listen(8002, ()=>{
-    console.log("get the API in localhost:3002");
+    console.log("get the API in localhost:8002");
 })
 
 // const txt = readFileSync('./index.js', 'utf-8');
